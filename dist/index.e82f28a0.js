@@ -557,64 +557,177 @@ function hmrAccept(bundle, id) {
 }
 
 },{}],"dV6cC":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+// templates
+// function buildCardTemplate(cardItem) {
+//   let localDate = new Date(cardItem.time).toLocaleString()
+//   return `
+//   <div id="c${cardItem.id}" class="d-flex flex-column rounded-3 px-3 py-2" draggable="true" style="background-color: rgb(228, 224, 162);">
+//             <div class="d-flex flex-row justify-content-between">
+//               <span>${cardItem.title}</span>
+//               <button data-id="${cardItem.id}" class="material-icons" data-bs-toggle="modal" data-bs-target="#modalEditCard" data-role="edit">more_vert</button>
+//             </div>
+//             <span>${cardItem.description}</span>
+//             <div class="d-flex gap-3 justify-content-between">
+//               <span>${cardItem.user}</span>
+//               <time>${localDate}</time>
+//             </div>
+//           </div>
+//   `
+// }
+// function buildDropdownTemplate(userName) {
+//   return `
+//   <li><a class="dropdown-item" href="#">${userName}</a></li>
+//   `
+// }
+// constructors
+// function TodoCard(title, description, user, status) {
+//   this.title = title
+//   this.description = description
+//   this.user = user
+//   this.time = new Date().toISOString()
+//   this.id = new Date().getTime()
+//   this.status = status
+// }
+// helpers
+// function $(selector) {
+//   return document.querySelector(selector)
+// }
+// function renderCards(collection, wrapperTodo, wrapperInProgress, wrapperDone) {
+//   let templateTodo = ''
+//   let templateInProgress = ''
+//   let templateDone = ''
+//   collection.forEach((item) => {
+//     const template = buildCardTemplate(item)
+//     console.log(item)
+//     if (item.status == 'ToDo') {
+//       templateTodo += template
+//     } else if (item.status == 'In Progress') {
+//       templateInProgress += template
+//     } else if (item.status == 'Done') {
+//       templateDone += template
+//     }
+//   })
+//   wrapperTodo.innerHTML = templateTodo
+//   wrapperInProgress.innerHTML = templateInProgress
+//   wrapperDone.innerHTML = templateDone
+//   collection.forEach((item) => {
+//     const cardElement = $(`#c${item.id}`)
+//     cardElement.addEventListener('dragstart', handleDrag)
+//   })
+// }
+// function renderUsers(collection, wrapper) {
+//   let templates = ''
+//   collection.forEach((item) => {
+//     const template = buildDropdownTemplate(item)
+//     templates += template
+//   })
+//   wrapper.innerHTML = templates
+// }
+// other
+// function countSumTodoCards() {
+//   // let sumCards = data.length
+//   // return sumCardsElement.innerHTML = sumCards
+//   return data.filter(function (item) {
+//     if (item.status == 'ToDo') {
+//       return true
+//     } else {
+//       return false
+//     }
+//   }).length
+// }
+// function countSumInProgressCards() {
+//   // let amountChildren = inProgressWrapElement.children.length
+//   // // console.log(amountChildren)
+//   // return numberInProgressCardsElement.innerHTML = amountChildren
+//   return data.filter(function (item) {
+//     if (item.status == 'In Progress') {
+//       return true
+//     } else {
+//       return false
+//     }
+//   }).length
+// }
+// function countSumDoneCards() {
+//   // let amountChildren = doneWrapElement.children.length
+//   // // console.log(amountChildren)
+//   // return numberDoneCardsElement.innerHTML = amountChildren
+//   return data.filter(function (item) {
+//     if (item.status == 'Done') {
+//       return true
+//     } else {
+//       false
+//     }
+//   }).length
+// }
+parcelHelpers.export(exports, "handleDrag", ()=>handleDrag);
+var _helpers = require("./helpers");
+var _constructor = require("./constructor");
+var _counters = require("./counters");
+var _clock = require("./clock");
+(0, _clock.currentTime)();
 // variables
 let data = [];
-data = getData();
+data = (0, _helpers.getData)();
 let users = [];
-const modalTitleElement = $("#modalTitle");
-const modalDescriptionElement = $("#modalDescription");
-const confirmButtonElement = $("#confirm");
-const todoWrapElement = $("#todoWrap");
-const inProgressColumnElement = $("#inProgressColumn");
-const inProgressWrapElement = $("#inProgressWrap");
-const doneColumnElement = $("#doneColumn");
-const doneWrapElement = $("#doneWrap");
-const dropdownElement = $("#dropdown");
-const dropdownMenuElement = $("#dropdownMenu");
-const deleteCardButtonElement = $("#deleteCardButton");
-const rowElement = $("#row");
-const modalTitleEditElement = $("#modalTitleEdit");
-const modalDescriptionEditElement = $("#modalDescriptionEdit");
-const confirmButtonEditElement = $("#confirmEdit");
-const dropdownEditElement = $("#dropdownEdit");
-const sumCardsElement = $("#sumCards");
-const numberInProgressCardsElement = $("#numberInProgressCards");
-const numberDoneCardsElement = $("#numberDoneCards");
-const buttonDeleteAllElement = $("buttonDeleteAll");
-const btnModalDeleteAllConfirmElement = $("#btnModalDeleteAllConfirm");
-const modalElement = $("#modalProhibition");
+const modalTitleElement = (0, _helpers.$)("#modalTitle");
+const modalDescriptionElement = (0, _helpers.$)("#modalDescription");
+const confirmButtonElement = (0, _helpers.$)("#confirm");
+const todoWrapElement = (0, _helpers.$)("#todoWrap");
+const inProgressColumnElement = (0, _helpers.$)("#inProgressColumn");
+const inProgressWrapElement = (0, _helpers.$)("#inProgressWrap");
+const doneColumnElement = (0, _helpers.$)("#doneColumn");
+const doneWrapElement = (0, _helpers.$)("#doneWrap");
+const dropdownElement = (0, _helpers.$)("#dropdown");
+const dropdownMenuElement = (0, _helpers.$)("#dropdownMenu");
+const deleteCardButtonElement = (0, _helpers.$)("#deleteCardButton");
+const rowElement = (0, _helpers.$)("#row");
+const modalTitleEditElement = (0, _helpers.$)("#modalTitleEdit");
+const modalDescriptionEditElement = (0, _helpers.$)("#modalDescriptionEdit");
+const confirmButtonEditElement = (0, _helpers.$)("#confirmEdit");
+const dropdownEditElement = (0, _helpers.$)("#dropdownEdit");
+const sumCardsElement = (0, _helpers.$)("#sumCards");
+const numberInProgressCardsElement = (0, _helpers.$)("#numberInProgressCards");
+const numberDoneCardsElement = (0, _helpers.$)("#numberDoneCards");
+const btnModalDeleteAllConfirmElement = (0, _helpers.$)("#btnModalDeleteAllConfirm");
+const modalElement = (0, _helpers.$)("#modalProhibition");
 const modalInstance = bootstrap.Modal.getOrCreateInstance(modalElement);
-renderCards(data, todoWrapElement, inProgressWrapElement, doneWrapElement);
-sumCardsElement.innerHTML = countSumTodoCards();
-numberInProgressCardsElement.innerHTML = countSumInProgressCards();
-numberDoneCardsElement.innerHTML = countSumDoneCards();
+(0, _helpers.renderCards)(data, todoWrapElement, inProgressWrapElement, doneWrapElement);
+sumCardsElement.innerHTML = (0, _counters.countSumTodoCards)(data);
+numberInProgressCardsElement.innerHTML = (0, _counters.countSumInProgressCards)(data);
+numberDoneCardsElement.innerHTML = (0, _counters.countSumDoneCards)(data);
 // local storage
-function getData() {
-    return JSON.parse(localStorage.getItem("data")) || [];
-}
-function setData(source) {
-    localStorage.setItem("data", JSON.stringify(source));
-}
+// function getData () {
+//   return JSON.parse(localStorage.getItem('data')) || []
+// }
+// function setData (source) {
+//   localStorage.setItem('data', JSON.stringify(source))
+// }
 // time
-function currentTime() {
-    let date = new Date(); /* creating object of Date class */ 
-    let hour = date.getHours();
-    let min = date.getMinutes();
-    let sec = date.getSeconds();
-    let midday = "AM";
-    midday = hour >= 12 ? "PM" : "AM"; /* assigning AM/PM */ 
-    hour = hour == 0 ? 12 : hour > 12 ? hour - 12 : hour; /* assigning hour in 12-hour format */ 
-    hour = updateTime(hour);
-    min = updateTime(min);
-    sec = updateTime(sec);
-    document.getElementById("clock").innerText = hour + " : " + min + " : " + sec + " " + midday; /* adding time to the div */ 
-    var t = setTimeout(currentTime, 1000); /* setting timer */ 
-}
-function updateTime(k) {
-    if (k < 10) return "0" + k;
-    else return k;
-}
-currentTime();
+// function currentTime() {
+//   let date = new Date(); /* creating object of Date class */
+//   let hour = date.getHours();
+//   let min = date.getMinutes();
+//   let sec = date.getSeconds();
+//   let midday = "AM";
+//   midday = (hour >= 12) ? "PM" : "AM"; /* assigning AM/PM */
+//   hour = (hour == 0) ? 12 : ((hour > 12) ? (hour - 12): hour); /* assigning hour in 12-hour format */
+//   hour = updateTime(hour);
+//   min = updateTime(min);
+//   sec = updateTime(sec);
+//   document.getElementById("clock").innerText = hour + " : " + min + " : " + sec + " " + midday; /* adding time to the div */
+//     var t = setTimeout(currentTime, 1000); /* setting timer */
+// }
+// function updateTime(k) { /* appending 0 before time elements if less than 10 */
+//   if (k < 10) {
+//     return "0" + k;
+//   }
+//   else {
+//     return k;
+//   }
+// }
+// currentTime();
 // query
 let promise = fetch("https://jsonplaceholder.typicode.com/users").then((response)=>response.json()).then((data)=>{
     users = data.map(function(elem) {
@@ -635,18 +748,18 @@ btnModalDeleteAllConfirmElement.addEventListener("click", handleDeleteAllDoneCar
 window.addEventListener("beforeunload", handleBeforeUnload);
 // handlers
 function handleConfirmation(event) {
-    const card = new TodoCard(modalTitleElement.value, modalDescriptionElement.value, dropdownElement.innerHTML, "ToDo");
+    const card = new (0, _constructor.TodoCard)(modalTitleElement.value, modalDescriptionElement.value, dropdownElement.innerHTML, "ToDo");
     data.push(card);
-    renderCards(data, todoWrapElement, inProgressWrapElement, doneWrapElement);
+    (0, _helpers.renderCards)(data, todoWrapElement, inProgressWrapElement, doneWrapElement);
     modalTitleElement.value = "";
     modalDescriptionElement.value = "";
     dropdownElement.innerHTML = "Select user";
-    sumCardsElement.innerHTML = countSumTodoCards();
+    sumCardsElement.innerHTML = (0, _counters.countSumTodoCards)(data);
 // const cardElement = $(`#c${card.id}`)
 // cardElement.addEventListener('dragstart', handleDrag)
 }
 function handleDropdownOpen(event) {
-    renderUsers(users, dropdownMenuElement);
+    (0, _helpers.renderUsers)(users, dropdownMenuElement);
 }
 function handleWriteTargetValue(event) {
     let name = event.target;
@@ -667,13 +780,16 @@ function handleDeleteCard(event) {
     const { target  } = event;
     const { role , id  } = target.dataset;
     if (role == "delete") {
+        console.debug("deleting", id);
         data = data.filter((item)=>item.id != id);
-        renderCards(data, todoWrapElement, inProgressWrapElement, doneWrapElement);
-        countSumTodoCards();
+        (0, _helpers.renderCards)(data, todoWrapElement, inProgressWrapElement, doneWrapElement);
+        sumCardsElement.innerHTML = (0, _counters.countSumTodoCards)(data);
+        numberInProgressCardsElement.innerHTML = (0, _counters.countSumInProgressCards)(data);
+        numberDoneCardsElement.innerHTML = (0, _counters.countSumDoneCards)(data);
     }
 }
 function handleAllowDrop(event) {
-    if (countSumInProgressCards() < 6) event.preventDefault();
+    if ((0, _counters.countSumInProgressCards)(data) < 6) event.preventDefault();
     else modalInstance.show();
 }
 function handleDrag(event) {
@@ -683,15 +799,15 @@ function handleDrag(event) {
 function handleDropInProgress(event) {
     let itemId = event.dataTransfer.getData("id");
     // console.log(itemId)
-    // console.log($(`#c${itemId}`))
-    inProgressWrapElement.append($(`#${itemId}`));
+    console.log((0, _helpers.$)(`#c${itemId}`));
+    inProgressWrapElement.append((0, _helpers.$)(`#${itemId}`));
     let cardItemId = itemId.substring(1) // чтобы обрезать в id="c${cardItem.id} чтобы найти карточку
     ;
     const draggedCard = data.find((item)=>item.id == cardItemId);
     draggedCard.status = "In Progress";
-    sumCardsElement.innerHTML = countSumTodoCards();
-    numberInProgressCardsElement.innerHTML = countSumInProgressCards();
-    numberDoneCardsElement.innerHTML = countSumDoneCards();
+    sumCardsElement.innerHTML = (0, _counters.countSumTodoCards)(data);
+    numberInProgressCardsElement.innerHTML = (0, _counters.countSumInProgressCards)(data);
+    numberDoneCardsElement.innerHTML = (0, _counters.countSumDoneCards)(data);
 }
 function handleAllowDropInDone(event) {
     event.preventDefault();
@@ -700,25 +816,77 @@ function handleDropInDone(event) {
     let itemId = event.dataTransfer.getData("id");
     // console.log(itemId)
     //console.log($(`#${itemId}`))
-    doneWrapElement.append($(`#${itemId}`));
+    doneWrapElement.append((0, _helpers.$)(`#${itemId}`));
     let cardItemId = itemId.substring(1);
     const draggedCard = data.find((item)=>item.id == cardItemId);
     draggedCard.status = "Done";
-    sumCardsElement.innerHTML = countSumTodoCards();
-    numberInProgressCardsElement.innerHTML = countSumInProgressCards();
-    numberDoneCardsElement.innerHTML = countSumDoneCards();
+    sumCardsElement.innerHTML = (0, _counters.countSumTodoCards)(data);
+    numberInProgressCardsElement.innerHTML = (0, _counters.countSumInProgressCards)(data);
+    numberDoneCardsElement.innerHTML = (0, _counters.countSumDoneCards)(data);
 }
 function handleDeleteAllDoneCards() {
     data = data.filter((item)=>item.status != "Done");
-    renderCards(data, todoWrapElement, inProgressWrapElement, doneWrapElement);
-    sumCardsElement.innerHTML = countSumTodoCards();
-    numberInProgressCardsElement.innerHTML = countSumInProgressCards();
-    numberDoneCardsElement.innerHTML = countSumDoneCards();
+    (0, _helpers.renderCards)(data, todoWrapElement, inProgressWrapElement, doneWrapElement);
+    sumCardsElement.innerHTML = (0, _counters.countSumTodoCards)(data);
+    numberInProgressCardsElement.innerHTML = (0, _counters.countSumInProgressCards)(data);
+    numberDoneCardsElement.innerHTML = (0, _counters.countSumDoneCards)(data);
 }
 function handleBeforeUnload() {
-    setData(data);
+    (0, _helpers.setData)(data);
 }
-// templates
+
+},{"./helpers":"hGI1E","./constructor":"ln1nT","./counters":"cAZor","./clock":"4sKTc","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"hGI1E":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+parcelHelpers.export(exports, "$", ()=>$);
+parcelHelpers.export(exports, "renderCards", ()=>renderCards);
+parcelHelpers.export(exports, "renderUsers", ()=>renderUsers);
+parcelHelpers.export(exports, "getData", ()=>getData);
+parcelHelpers.export(exports, "setData", ()=>setData);
+var _templates = require("./templates");
+var _script = require("./script");
+function $(selector) {
+    return document.querySelector(selector);
+}
+function renderCards(collection, wrapperTodo, wrapperInProgress, wrapperDone) {
+    let templateTodo = "";
+    let templateInProgress = "";
+    let templateDone = "";
+    collection.forEach((item)=>{
+        const template = (0, _templates.buildCardTemplate)(item);
+        //console.log(item)
+        if (item.status == "ToDo") templateTodo += template;
+        else if (item.status == "In Progress") templateInProgress += template;
+        else if (item.status == "Done") templateDone += template;
+    });
+    wrapperTodo.innerHTML = templateTodo;
+    wrapperInProgress.innerHTML = templateInProgress;
+    wrapperDone.innerHTML = templateDone;
+    collection.forEach((item)=>{
+        const cardElement = $(`#c${item.id}`);
+        cardElement.addEventListener("dragstart", (0, _script.handleDrag));
+    });
+}
+function renderUsers(collection, wrapper) {
+    let templates = "";
+    collection.forEach((item)=>{
+        const template = (0, _templates.buildDropdownTemplate)(item);
+        templates += template;
+    });
+    wrapper.innerHTML = templates;
+}
+function getData() {
+    return JSON.parse(localStorage.getItem("data")) || [];
+}
+function setData(source) {
+    localStorage.setItem("data", JSON.stringify(source));
+}
+
+},{"./templates":"18mfC","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","./script":"dV6cC"}],"18mfC":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+parcelHelpers.export(exports, "buildCardTemplate", ()=>buildCardTemplate);
+parcelHelpers.export(exports, "buildDropdownTemplate", ()=>buildDropdownTemplate);
 function buildCardTemplate(cardItem) {
     let localDate = new Date(cardItem.time).toLocaleString();
     return `
@@ -740,7 +908,41 @@ function buildDropdownTemplate(userName) {
   <li><a class="dropdown-item" href="#">${userName}</a></li>
   `;
 }
-// constructors
+
+},{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"gkKU3":[function(require,module,exports) {
+exports.interopDefault = function(a) {
+    return a && a.__esModule ? a : {
+        default: a
+    };
+};
+exports.defineInteropFlag = function(a) {
+    Object.defineProperty(a, "__esModule", {
+        value: true
+    });
+};
+exports.exportAll = function(source, dest) {
+    Object.keys(source).forEach(function(key) {
+        if (key === "default" || key === "__esModule" || dest.hasOwnProperty(key)) return;
+        Object.defineProperty(dest, key, {
+            enumerable: true,
+            get: function() {
+                return source[key];
+            }
+        });
+    });
+    return dest;
+};
+exports.export = function(dest, destName, get) {
+    Object.defineProperty(dest, destName, {
+        enumerable: true,
+        get: get
+    });
+};
+
+},{}],"ln1nT":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+parcelHelpers.export(exports, "TodoCard", ()=>TodoCard);
 function TodoCard(title, description, user, status) {
     this.title = title;
     this.description = description;
@@ -749,39 +951,14 @@ function TodoCard(title, description, user, status) {
     this.id = new Date().getTime();
     this.status = status;
 }
-// helpers
-function $(selector) {
-    return document.querySelector(selector);
-}
-function renderCards(collection, wrapperTodo, wrapperInProgress, wrapperDone) {
-    let templateTodo = "";
-    let templateInProgress = "";
-    let templateDone = "";
-    collection.forEach((item)=>{
-        const template = buildCardTemplate(item);
-        console.log(item);
-        if (item.status == "ToDo") templateTodo += template;
-        else if (item.status == "In Progress") templateInProgress += template;
-        else if (item.status == "Done") templateDone += template;
-    });
-    wrapperTodo.innerHTML = templateTodo;
-    wrapperInProgress.innerHTML = templateInProgress;
-    wrapperDone.innerHTML = templateDone;
-    collection.forEach((item)=>{
-        const cardElement = $(`#c${item.id}`);
-        cardElement.addEventListener("dragstart", handleDrag);
-    });
-}
-function renderUsers(collection, wrapper) {
-    let templates = "";
-    collection.forEach((item)=>{
-        const template = buildDropdownTemplate(item);
-        templates += template;
-    });
-    wrapper.innerHTML = templates;
-}
-// other
-function countSumTodoCards() {
+
+},{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"cAZor":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+parcelHelpers.export(exports, "countSumDoneCards", ()=>countSumDoneCards);
+parcelHelpers.export(exports, "countSumTodoCards", ()=>countSumTodoCards);
+parcelHelpers.export(exports, "countSumInProgressCards", ()=>countSumInProgressCards);
+function countSumTodoCards(data) {
     // let sumCards = data.length
     // return sumCardsElement.innerHTML = sumCards
     return data.filter(function(item) {
@@ -789,7 +966,7 @@ function countSumTodoCards() {
         else return false;
     }).length;
 }
-function countSumInProgressCards() {
+function countSumInProgressCards(data) {
     // let amountChildren = inProgressWrapElement.children.length
     // // console.log(amountChildren)
     // return numberInProgressCardsElement.innerHTML = amountChildren
@@ -798,7 +975,7 @@ function countSumInProgressCards() {
         else return false;
     }).length;
 }
-function countSumDoneCards() {
+function countSumDoneCards(data) {
     // let amountChildren = doneWrapElement.children.length
     // // console.log(amountChildren)
     // return numberDoneCardsElement.innerHTML = amountChildren
@@ -807,6 +984,29 @@ function countSumDoneCards() {
     }).length;
 }
 
-},{}]},["fyTPu","dV6cC"], "dV6cC", "parcelRequire9b17")
+},{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"4sKTc":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+parcelHelpers.export(exports, "currentTime", ()=>currentTime);
+function currentTime() {
+    let date = new Date();
+    let hour = date.getHours();
+    let min = date.getMinutes();
+    let sec = date.getSeconds();
+    let midday = "AM";
+    midday = hour >= 12 ? "PM" : "AM"; /* assigning AM/PM */ 
+    hour = hour == 0 ? 12 : hour > 12 ? hour - 12 : hour; /* assigning hour in 12-hour format */ 
+    hour = updateTime(hour);
+    min = updateTime(min);
+    sec = updateTime(sec);
+    document.getElementById("clock").innerText = hour + " : " + min + " : " + sec + " " + midday; /* adding time to the div */ 
+    var t = setTimeout(currentTime, 1000); /* setting timer */ 
+}
+function updateTime(k) {
+    if (k < 10) return "0" + k;
+    else return k;
+}
+
+},{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}]},["fyTPu","dV6cC"], "dV6cC", "parcelRequire9b17")
 
 //# sourceMappingURL=index.e82f28a0.js.map
