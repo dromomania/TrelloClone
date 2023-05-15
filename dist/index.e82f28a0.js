@@ -583,6 +583,26 @@ const buttonDeleteAllElement = $("buttonDeleteAll");
 const btnModalDeleteAllConfirmElement = $("#btnModalDeleteAllConfirm");
 const modalElement = $("#modalProhibition");
 const modalInstance = bootstrap.Modal.getOrCreateInstance(modalElement);
+// time
+function currentTime() {
+    let date = new Date(); /* creating object of Date class */ 
+    let hour = date.getHours();
+    let min = date.getMinutes();
+    let sec = date.getSeconds();
+    let midday = "AM";
+    midday = hour >= 12 ? "PM" : "AM"; /* assigning AM/PM */ 
+    hour = hour == 0 ? 12 : hour > 12 ? hour - 12 : hour; /* assigning hour in 12-hour format */ 
+    hour = updateTime(hour);
+    min = updateTime(min);
+    sec = updateTime(sec);
+    document.getElementById("clock").innerText = hour + " : " + min + " : " + sec + " " + midday; /* adding time to the div */ 
+    var t = setTimeout(currentTime, 1000); /* setting timer */ 
+}
+function updateTime(k) {
+    if (k < 10) return "0" + k;
+    else return k;
+}
+currentTime();
 // query
 let promise = fetch("https://jsonplaceholder.typicode.com/users").then((response)=>response.json()).then((data)=>{
     users = data.map(function(elem) {
@@ -685,7 +705,7 @@ function handleDeleteAllDoneCards() {
 // templates
 function buildCardTemplate(cardItem) {
     return `
-  <div id="c${cardItem.id}" class="d-flex flex-column rounded-3 px-3 py-2" draggable="true" style="background-color: rgb(89, 207, 119);">
+  <div id="c${cardItem.id}" class="d-flex flex-column rounded-3 px-3 py-2" draggable="true" style="background-color: rgb(228, 224, 162);">
             <div class="d-flex flex-row justify-content-between">
               <span>${cardItem.title}</span>
               <button data-id="${cardItem.id}" class="material-icons" data-bs-toggle="modal" data-bs-target="#modalEditCard" data-role="edit">more_vert</button>

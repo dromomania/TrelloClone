@@ -4,7 +4,7 @@
 58G:\trello\TrelloClone\node_modules\css-select\lib\index.js133286365613250050 0
 34G:\trello\TrelloClone\package.json133283122490000000 0
 49G:\trello\TrelloClone\node_modules\immutable\dist133286365612303419 1
-26G:\trello\TrelloClone\dist133286373507160996 1
+26G:\trello\TrelloClone\dist133286440852722868 1
 76G:\trello\TrelloClone\node_modules\@popperjs\core\dist\esm\utils\debounce.js133286365635237575 0
 73G:\trello\TrelloClone\node_modules\cosmiconfig\dist\ExplorerSync.d.ts.map133286365613928227 0
 62G:\trello\TrelloClone\node_modules\source-map\lib\array-set.js133286365606328442 0
@@ -52,7 +52,7 @@
 90G:\trello\TrelloClone\node_modules\caniuse-lite\data\features\document-scrollingelement.js133286365635397146 0
 25G:\trello\TrelloClone\src133286369217782589 1
 78G:\trello\TrelloClone\node_modules\css-tree\cjs\syntax\node\MediaQueryList.cjs133286365626284977 0
-38G:\trello\TrelloClone\src\js\script.js133286372303891391 0
+38G:\trello\TrelloClone\src\js\script.js133286437159589675 0
 59G:\trello\TrelloClone\node_modules\source-map\lib\base64.js133286365608412875 0
 61G:\trello\TrelloClone\node_modules\picomatch\lib\constants.js133286365602585132 0
 67G:\trello\TrelloClone\node_modules\css-select\node_modules\domutils133286365621331345 1
@@ -61,7 +61,7 @@
 28G:\trello\TrelloClone\src\js133286372926613374 1
 52G:\trello\TrelloClone\node_modules\srcset\index.d.ts133286365605588349 0
 114G:\trello\TrelloClone\node_modules\@parcel\optimizer-htmlnano\node_modules\css-tree\lib\syntax\atrule\font-face.js133286365621742181 0
-36G:\trello\TrelloClone\src\index.html133286373497881994 0
+36G:\trello\TrelloClone\src\index.html133286440517043256 0
 91G:\trello\TrelloClone\node_modules\@babel\highlight\node_modules\color-convert\package.json133286365601619807 0
 43G:\trello\TrelloClone\node_modules\has-flag133286365605428781 1
 102G:\trello\TrelloClone\node_modules\@parcel\optimizer-htmlnano\node_modules\svgo\plugins\removeAttrs.js133286365620145870 0
@@ -92,7 +92,7 @@
 47G:\trello\TrelloClone\node_modules\svgo\plugins133286365625934179 1
 81G:\trello\TrelloClone\node_modules\css-select\lib\pseudo-selectors\index.d.ts.map133286365621291447 0
 40G:\trello\TrelloClone\node_modules\@lmdb133286365648472132 1
-39G:\trello\TrelloClone\src\scss\app.scss133286372690933649 0
+39G:\trello\TrelloClone\src\scss\app.scss133286440851283448 0
 50G:\trello\TrelloClone\node_modules\detect-libc\lib133286365607435497 1
 55G:\trello\TrelloClone\node_modules\terser\lib\minify.js133286365620275523 0
 80G:\trello\TrelloClone\node_modules\@swc\helpers\src\_iterable_to_array_limit.mjs133286365630490974 0
@@ -1856,7 +1856,7 @@
 86G:\trello\TrelloClone\node_modules\@parcel\core\test\fixtures\config-extends-not-found133286365612542777 1
 81G:\trello\TrelloClone\node_modules\caniuse-lite\data\features\css-focus-within.js133286365631179139 0
 51G:\trello\TrelloClone\node_modules\css-what\LICENSE133286365601505845 0
-45G:\trello\TrelloClone\dist\index.fcb3f8e3.css133286373506848599 0
+45G:\trello\TrelloClone\dist\index.fcb3f8e3.css133286440852633106 0
 111G:\trello\TrelloClone\node_modules\msgpackr-extract\node_modules\.bin\node-gyp-build-optional-packages-test.cmd133286365642540387 0
 79G:\trello\TrelloClone\node_modules\caniuse-lite\data\features\serviceworkers.js133286365639383709 0
 70G:\trello\TrelloClone\node_modules\css-tree\cjs\syntax\atrule\page.cjs133286365626993074 0
@@ -5837,7 +5837,7 @@
 108G:\trello\TrelloClone\node_modules\@parcel\optimizer-htmlnano\node_modules\svgo\plugins\removeHiddenElems.js133286365621851884 0
 105G:\trello\TrelloClone\node_modules\@parcel\optimizer-htmlnano\node_modules\svgo\plugins\removeMetadata.js133286365622081281 0
 116G:\trello\TrelloClone\node_modules\@parcel\optimizer-htmlnano\node_modules\svgo\plugins\removeUnknownsAndDefaults.js133286365623110264 0
-48G:\trello\TrelloClone\dist\index.e82f28a0.js.map133286373507004791 0
+48G:\trello\TrelloClone\dist\index.e82f28a0.js.map133286440852702960 0
 105G:\trello\TrelloClone\node_modules\@parcel\optimizer-htmlnano\node_modules\svgo\plugins\removeUnusedNS.js133286365623259868 0
 108G:\trello\TrelloClone\node_modules\@parcel\optimizer-htmlnano\node_modules\svgo\plugins\removeUselessDefs.js133286365623349630 0
 117G:\trello\TrelloClone\node_modules\@parcel\optimizer-htmlnano\node_modules\svgo\plugins\removeUselessStrokeAndFill.js133286365623489262 0
@@ -6419,6 +6419,6 @@
 50G:\trello\TrelloClone\node_modules\.bin\terser.ps1133286365642540387 0
 62G:\trello\TrelloClone\node_modules\.bin\update-browserslist-db133286365642540387 0
 66G:\trello\TrelloClone\node_modules\.bin\update-browserslist-db.ps1133286365642540387 0
-44G:\trello\TrelloClone\dist\index.e82f28a0.js133286373507004791 0
-49G:\trello\TrelloClone\dist\index.fcb3f8e3.css.map133286373507004791 0
-37G:\trello\TrelloClone\dist\index.html133286373507160996 0
+44G:\trello\TrelloClone\dist\index.e82f28a0.js133286440852643078 0
+49G:\trello\TrelloClone\dist\index.fcb3f8e3.css.map133286440852702960 0
+37G:\trello\TrelloClone\dist\index.html133286440519227394 0

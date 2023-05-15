@@ -9,6 +9,9 @@
     integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
   <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
   <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="stylesheet" href="./scss/app.scss">
   <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.7/dist/umd/popper.min.js"
     integrity="sha384-zYPOMqeu1DAVkHiLqWBUTcbYfZ8osu1Nd6Z89ify25QV9guujx43ITvfi12/QExE"
@@ -20,9 +23,10 @@
   <title>Document</title>
 </head>
 
-<body class="bg-body-secondary py-3">
-  <div class="container-fluid px-4" style="max-width: 1500px;">
-    <div class="row rounded-3 py-3 p-3" style="background-color: rgb(89, 207, 119);">Trello</div>
+<body class="py-3">
+  <div class="container-fluid px-4 rounded-3 d-flex flex-row justify-content-between" style="max-width: 1500px; background-color: rgb(175, 196, 180);">
+    <div class="row rounded-3 py-3 p-3">TrelloClone</div>
+    <div id="clock" class="mt-2"></div>
   </div>
 
   <div class="container-xxl">
@@ -33,7 +37,7 @@
         <div class="py-3 px-3 rounded-3 d-flex flex-column justify-content-between"
           style="background-color: rgb(175, 196, 180);">
           <div class="py-2 px-2 rounded-3 mb-2 d-flex flex-row justify-content-between"
-            style="background-color: rgb(250, 247, 30);">
+            style="background-color: rgb(108, 78, 138);">
             <span>TODO</span>
             <span id="sumCards"></span>
           </div>
@@ -52,8 +56,8 @@
             </div>
           </div> -->
           </div>
-          <button class="btn btn-success mt-1" type="button" data-bs-toggle="modal" data-bs-target="#modalAddTodo"
-            style="width: 100%;">Add todo</button>
+          <button class="btn mt-1" type="button" data-bs-toggle="modal" data-bs-target="#modalAddTodo"
+            style="width: 100%; background-color: rgb(110, 145, 24);">Add todo</button>
         </div>
       </div>
       <!-- COLUMN TODO -->
@@ -126,7 +130,7 @@
       <div class="col">
         <div id="inProgressColumn" class="py-3 px-3 rounded-3" style="background-color: rgb(175, 196, 180);">
           <div class="mt-0 py-2 px-2 rounded-3 mb-2 d-flex flex-row justify-content-between"
-            style="background-color: rgb(30, 250, 144);">
+            style="background-color: rgb(204, 198, 109);">
             <span>IN PROGRESS</span>
             <span id="numberInProgressCards"></span>
           </div>
@@ -152,7 +156,7 @@
       <div class="col">
         <div id="doneColumn" class="py-3 px-3 rounded-3" style="background-color: rgb(175, 196, 180);">
           <div class="mt-0 py-2 px-2 rounded-3 mb-2 d-flex flex-row justify-content-between"
-            style="background-color: rgb(30, 250, 41);">
+            style="background-color: rgb(176, 125, 158);">
             <span>DONE</span>
             <span id="numberDoneCards"></span>
           </div>
@@ -170,7 +174,7 @@
           </div> -->
           </div>
           <button id="buttonDeleteAll" data-bs-toggle="modal" data-bs-target="#modalButtonDeleteAll" type="button"
-            class="btn btn-success mt-1" style="width: 100%;">Delete all</button>
+            class="btn mt-1" style="width: 100%; background-color: rgb(110, 145, 24);">Delete all</button>
         </div>
       </div>
       <!-- COLUMN DONE -->
@@ -207,8 +211,7 @@
               <p>Before you can add a new card, you must complete the current tasks.</p>
             </div>
             <div class="modal-footer">
-              <button id="" type="button" class="btn btn-secondary"
-                data-bs-dismiss="modal">Cancel</button>
+              <button id="" type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
             </div>
           </div>
         </div>

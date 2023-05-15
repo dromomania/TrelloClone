@@ -8,6 +8,9 @@
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
   <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
   <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="stylesheet" href="/index.fcb3f8e3.css">
   <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.7/dist/umd/popper.min.js" integrity="sha384-zYPOMqeu1DAVkHiLqWBUTcbYfZ8osu1Nd6Z89ify25QV9guujx43ITvfi12/QExE" crossorigin="anonymous"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.min.js" integrity="sha384-Y4oOpwW3duJdCWv5ly8SCFYWqFDsfob/3GkgExXKV4idmbt98QcxXYs9UoXAB7BZ" crossorigin="anonymous"></script>
@@ -15,9 +18,10 @@
   <title>Document</title>
 </head>
 
-<body class="bg-body-secondary py-3">
-  <div class="container-fluid px-4" style="max-width: 1500px">
-    <div class="row rounded-3 py-3 p-3" style="background-color: #59cf77">Trello</div>
+<body class="py-3">
+  <div class="container-fluid px-4 rounded-3 d-flex flex-row justify-content-between" style="max-width: 1500px; background-color: #afc4b4">
+    <div class="row rounded-3 py-3 p-3">TrelloClone</div>
+    <div id="clock" class="mt-2"></div>
   </div>
 
   <div class="container-xxl">
@@ -26,7 +30,7 @@
       <!-- COLUMN TODO -->
       <div class="col">
         <div class="py-3 px-3 rounded-3 d-flex flex-column justify-content-between" style="background-color: #afc4b4">
-          <div class="py-2 px-2 rounded-3 mb-2 d-flex flex-row justify-content-between" style="background-color: #faf71e">
+          <div class="py-2 px-2 rounded-3 mb-2 d-flex flex-row justify-content-between" style="background-color: #6c4e8a">
             <span>TODO</span>
             <span id="sumCards"></span>
           </div>
@@ -45,7 +49,7 @@
             </div>
           </div> -->
           </div>
-          <button class="btn btn-success mt-1" type="button" data-bs-toggle="modal" data-bs-target="#modalAddTodo" style="width: 100%">Add todo</button>
+          <button class="btn mt-1" type="button" data-bs-toggle="modal" data-bs-target="#modalAddTodo" style="width: 100%; background-color: #6e9118">Add todo</button>
         </div>
       </div>
       <!-- COLUMN TODO -->
@@ -114,7 +118,7 @@
       <!-- COLUMN IN PROGRESS -->
       <div class="col">
         <div id="inProgressColumn" class="py-3 px-3 rounded-3" style="background-color: #afc4b4">
-          <div class="mt-0 py-2 px-2 rounded-3 mb-2 d-flex flex-row justify-content-between" style="background-color: #1efa90">
+          <div class="mt-0 py-2 px-2 rounded-3 mb-2 d-flex flex-row justify-content-between" style="background-color: #ccc66d">
             <span>IN PROGRESS</span>
             <span id="numberInProgressCards"></span>
           </div>
@@ -139,7 +143,7 @@
       <!-- COLUMN DONE -->
       <div class="col">
         <div id="doneColumn" class="py-3 px-3 rounded-3" style="background-color: #afc4b4">
-          <div class="mt-0 py-2 px-2 rounded-3 mb-2 d-flex flex-row justify-content-between" style="background-color: #1efa29">
+          <div class="mt-0 py-2 px-2 rounded-3 mb-2 d-flex flex-row justify-content-between" style="background-color: #b07d9e">
             <span>DONE</span>
             <span id="numberDoneCards"></span>
           </div>
@@ -156,7 +160,7 @@
             </div>
           </div> -->
           </div>
-          <button id="buttonDeleteAll" data-bs-toggle="modal" data-bs-target="#modalButtonDeleteAll" type="button" class="btn btn-success mt-1" style="width: 100%">Delete all</button>
+          <button id="buttonDeleteAll" data-bs-toggle="modal" data-bs-target="#modalButtonDeleteAll" type="button" class="btn mt-1" style="width: 100%; background-color: #6e9118">Delete all</button>
         </div>
       </div>
       <!-- COLUMN DONE -->

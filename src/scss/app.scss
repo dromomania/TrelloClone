@@ -1,8 +1,20 @@
+body {
+  background-color: rgb(104, 72, 104);
+}
+
 .material-icons {
   border: none;
-  background-color: rgb(89, 207, 119);
+  background-color: rgb(228, 224, 162);
 }
 
 .modal-title {
   border: none;
+}
+
+#clock {
+  font-family: 'Orbitron', sans-serif;
+  color: #000000;
+  font-size: 24px;
+  text-align: center;
+  padding-right: 70px;
 }
