@@ -559,6 +559,7 @@ function hmrAccept(bundle, id) {
 },{}],"dV6cC":[function(require,module,exports) {
 // variables
 let data = [];
+data = getData();
 let users = [];
 const modalTitleElement = $("#modalTitle");
 const modalDescriptionElement = $("#modalDescription");
@@ -583,6 +584,17 @@ const buttonDeleteAllElement = $("buttonDeleteAll");
 const btnModalDeleteAllConfirmElement = $("#btnModalDeleteAllConfirm");
 const modalElement = $("#modalProhibition");
 const modalInstance = bootstrap.Modal.getOrCreateInstance(modalElement);
+renderCards(data, todoWrapElement, inProgressWrapElement, doneWrapElement);
+sumCardsElement.innerHTML = countSumTodoCards();
+numberInProgressCardsElement.innerHTML = countSumInProgressCards();
+numberDoneCardsElement.innerHTML = countSumDoneCards();
+// local storage
+function getData() {
+    return JSON.parse(localStorage.getItem("data")) || [];
+}
+function setData(source) {
+    localStorage.setItem("data", JSON.stringify(source));
+}
 // time
 function currentTime() {
     let date = new Date(); /* creating object of Date class */ 
@@ -620,6 +632,7 @@ inProgressColumnElement.addEventListener("drop", handleDropInProgress);
 doneColumnElement.addEventListener("dragover", handleAllowDropInDone);
 doneColumnElement.addEventListener("drop", handleDropInDone);
 btnModalDeleteAllConfirmElement.addEventListener("click", handleDeleteAllDoneCards);
+window.addEventListener("beforeunload", handleBeforeUnload);
 // handlers
 function handleConfirmation(event) {
     const card = new TodoCard(modalTitleElement.value, modalDescriptionElement.value, dropdownElement.innerHTML, "ToDo");
@@ -702,8 +715,12 @@ function handleDeleteAllDoneCards() {
     numberInProgressCardsElement.innerHTML = countSumInProgressCards();
     numberDoneCardsElement.innerHTML = countSumDoneCards();
 }
+function handleBeforeUnload() {
+    setData(data);
+}
 // templates
 function buildCardTemplate(cardItem) {
+    let localDate = new Date(cardItem.time).toLocaleString();
     return `
   <div id="c${cardItem.id}" class="d-flex flex-column rounded-3 px-3 py-2" draggable="true" style="background-color: rgb(228, 224, 162);">
             <div class="d-flex flex-row justify-content-between">
@@ -713,7 +730,7 @@ function buildCardTemplate(cardItem) {
             <span>${cardItem.description}</span>
             <div class="d-flex gap-3 justify-content-between">
               <span>${cardItem.user}</span>
-              <time>${cardItem.time.toLocaleTimeString()}</time>
+              <time>${localDate}</time>
             </div>
           </div>
   `;
@@ -728,7 +745,7 @@ function TodoCard(title, description, user, status) {
     this.title = title;
     this.description = description;
     this.user = user;
-    this.time = new Date();
+    this.time = new Date().toISOString();
     this.id = new Date().getTime();
     this.status = status;
 }
