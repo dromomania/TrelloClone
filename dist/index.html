@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="stylesheet" href="/index.fcb3f8e3.css">
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.7/dist/umd/popper.min.js" integrity="sha384-zYPOMqeu1DAVkHiLqWBUTcbYfZ8osu1Nd6Z89ify25QV9guujx43ITvfi12/QExE" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.min.js" integrity="sha384-Y4oOpwW3duJdCWv5ly8SCFYWqFDsfob/3GkgExXKV4idmbt98QcxXYs9UoXAB7BZ" crossorigin="anonymous"></script>
+  <script src="/index.e82f28a0.js" defer=""></script>
+  <title>Document</title>
+</head>
+
+<body class="bg-body-secondary py-3">
+  <div class="container-fluid px-4" style="max-width: 1500px">
+    <div class="row rounded-3 py-3 p-3" style="background-color: #59cf77">Trello</div>
+  </div>
+
+  <div class="container-xxl">
+    <div id="row" class="row mt-3">
+
+      <!-- COLUMN TODO -->
+      <div class="col">
+        <div class="py-3 px-3 rounded-3 d-flex flex-column justify-content-between" style="background-color: #afc4b4">
+          <div class="py-2 px-2 rounded-3 mb-2 d-flex flex-row justify-content-between" style="background-color: #faf71e">
+            <span>TODO</span>
+            <span id="sumCards"></span>
+          </div>
+          <div>
+          </div>
+          <div id="todoWrap" class="d-flex  flex-column gap-2">
+            <!-- <div class="d-flex flex-column rounded-3 px-3 py-2" style="background-color: rgb(89, 207, 119);">
+            <div class="d-flex flex-row justify-content-between">
+              <span>Title</span>
+              <button class="material-icons">more_vert</button>
+            </div>
+            <span>Description</span>
+            <div class="d-flex gap-3 justify-content-between">
+              <span>User</span>
+              <time>8:00</time>
+            </div>
+          </div> -->
+          </div>
+          <button class="btn btn-success mt-1" type="button" data-bs-toggle="modal" data-bs-target="#modalAddTodo" style="width: 100%">Add todo</button>
+        </div>
+      </div>
+      <!-- COLUMN TODO -->
+
+      <!-- MODAL WINDOW FOR BUTTON ADD TODO -->
+      <div class="modal fade" id="modalAddTodo" tabindex="-1" aria-hidden="true" aria-labelledby="modalAddTodo">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <input id="modalTitle" class="modal-title" placeholder="Title">
+              <!-- <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button> -->
+            </div>
+            <div class="modal-body">
+              <textarea id="modalDescription" placeholder="Description"></textarea>
+            </div>
+            <div class="modal-footer">
+
+              <div class="dropdown">
+                <button id="dropdown" class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  Select user
+                </button>
+                <ul id="dropdownMenu" class="dropdown-menu">
+
+                </ul>
+              </div>
+
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+              <button id="confirm" type="button" data-bs-dismiss="modal" class="btn btn-primary">Confirm</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- MODAL WINDOW FOR BUTTON ADD TODO -->
+
+      <!-- MODAL WINDOW FOR BUTTON EDIT -->
+      <div class="modal fade" id="modalEditCard" tabindex="-1" aria-hidden="true" aria-labelledby="modalEditCard">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <input id="modalTitleEdit" class="modal-title" placeholder="Title">
+              <button id="deleteCardButton" type="button" class="btn material-icons" data-bs-dismiss="modal" data-role="delete" aria-label="remove" style="background-color: #dbdbdb">delete</button>
+            </div>
+            <div class="modal-body">
+              <textarea id="modalDescriptionEdit" placeholder="Description"></textarea>
+            </div>
+            <div class="modal-footer">
+
+              <div class="dropdown">
+                <button id="dropdownEdit" class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  Select user
+                </button>
+                <ul id="dropdownMenuEdit" class="dropdown-menu">
+
+                </ul>
+              </div>
+
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+              <button id="confirmEdit" type="button" data-bs-dismiss="modal" class="btn btn-primary">Confirm</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- MODAL WINDOW FOR BUTTON EDIT -->
+
+
+      <!-- COLUMN IN PROGRESS -->
+      <div class="col">
+        <div id="inProgressColumn" class="py-3 px-3 rounded-3" style="background-color: #afc4b4">
+          <div class="mt-0 py-2 px-2 rounded-3 mb-2 d-flex flex-row justify-content-between" style="background-color: #1efa90">
+            <span>IN PROGRESS</span>
+            <span id="numberInProgressCards"></span>
+          </div>
+          <div id="inProgressWrap" class="d-flex  flex-column gap-2">
+            <!-- <div class="d-flex flex-column rounded-3 px-3 py-2" style="background-color: rgb(89, 207, 119);">
+            <div class="d-flex flex-row justify-content-between">
+              <span>Title</span>
+              <button class="material-icons">more_vert</button>
+            </div>
+            <span>Description</span>
+            <div class="d-flex gap-3 justify-content-between">
+              <span>User</span>
+              <time>8:00</time>
+            </div>
+          </div> -->
+          </div>
+        </div>
+      </div>
+      <!-- COLUMN IN PROGRESS -->
+
+
+      <!-- COLUMN DONE -->
+      <div class="col">
+        <div id="doneColumn" class="py-3 px-3 rounded-3" style="background-color: #afc4b4">
+          <div class="mt-0 py-2 px-2 rounded-3 mb-2 d-flex flex-row justify-content-between" style="background-color: #1efa29">
+            <span>DONE</span>
+            <span id="numberDoneCards"></span>
+          </div>
+          <div id="doneWrap" class="d-flex  flex-column gap-2">
+            <!-- <div class="d-flex flex-column rounded-3 px-3 py-2" style="background-color: rgb(89, 207, 119);">
+            <div class="d-flex flex-row justify-content-between">
+              <span>Title</span>
+              <button class="material-icons">more_vert</button>
+            </div>
+            <span>Description</span>
+            <div class="d-flex gap-3 justify-content-between">
+              <span>User</span>
+              <time>8:00</time>
+            </div>
+          </div> -->
+          </div>
+          <button id="buttonDeleteAll" data-bs-toggle="modal" data-bs-target="#modalButtonDeleteAll" type="button" class="btn btn-success mt-1" style="width: 100%">Delete all</button>
+        </div>
+      </div>
+      <!-- COLUMN DONE -->
+
+      <!-- MODAL WINDOW FOR BUTTON DELETE ALL -->
+      <div class="modal fade" id="modalButtonDeleteAll" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title">Warning!</h5>
+            </div>
+            <div class="modal-body">
+              <p>Are you confirming the action?</p>
+            </div>
+            <div class="modal-footer">
+              <button id="btnModalDeleteAllCancel" type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+              <button id="btnModalDeleteAllConfirm" data-bs-dismiss="modal" type="button" class="btn btn-primary">Confirm</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- MODAL WINDOW FOR BUTTON DELETE ALL -->
+
+      <!-- MODAL WINDOW FOR PROHIBITION -->
+      <div class="modal fade" id="modalProhibition" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title">Warning!</h5>
+            </div>
+            <div class="modal-body">
+              <p>Before you can add a new card, you must complete the current tasks.</p>
+            </div>
+            <div class="modal-footer">
+              <button id="" type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- MODAL WINDOW FOR PROHIBITION -->
+
+
+    </div>
+  </div>
+
+</body>
+
+</html>

@@ -1,0 +1,1 @@
+{"mappings":"AAAA;;;;;AAKA","sources":["src/scss/app.scss"],"sourcesContent":[".material-icons {\r\n  border: none;\r\n  background-color: rgb(89, 207, 119);\r\n}\r\n\r\n.modal-title {\r\n  border: none;\r\n}\r\n"],"names":[],"version":3,"file":"index.fcb3f8e3.css.map","sourceRoot":"/__parcel_source_root/"}
