@@ -559,108 +559,6 @@ function hmrAccept(bundle, id) {
 },{}],"dV6cC":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
-// templates
-// function buildCardTemplate(cardItem) {
-//   let localDate = new Date(cardItem.time).toLocaleString()
-//   return `
-//   <div id="c${cardItem.id}" class="d-flex flex-column rounded-3 px-3 py-2" draggable="true" style="background-color: rgb(228, 224, 162);">
-//             <div class="d-flex flex-row justify-content-between">
-//               <span>${cardItem.title}</span>
-//               <button data-id="${cardItem.id}" class="material-icons" data-bs-toggle="modal" data-bs-target="#modalEditCard" data-role="edit">more_vert</button>
-//             </div>
-//             <span>${cardItem.description}</span>
-//             <div class="d-flex gap-3 justify-content-between">
-//               <span>${cardItem.user}</span>
-//               <time>${localDate}</time>
-//             </div>
-//           </div>
-//   `
-// }
-// function buildDropdownTemplate(userName) {
-//   return `
-//   <li><a class="dropdown-item" href="#">${userName}</a></li>
-//   `
-// }
-// constructors
-// function TodoCard(title, description, user, status) {
-//   this.title = title
-//   this.description = description
-//   this.user = user
-//   this.time = new Date().toISOString()
-//   this.id = new Date().getTime()
-//   this.status = status
-// }
-// helpers
-// function $(selector) {
-//   return document.querySelector(selector)
-// }
-// function renderCards(collection, wrapperTodo, wrapperInProgress, wrapperDone) {
-//   let templateTodo = ''
-//   let templateInProgress = ''
-//   let templateDone = ''
-//   collection.forEach((item) => {
-//     const template = buildCardTemplate(item)
-//     console.log(item)
-//     if (item.status == 'ToDo') {
-//       templateTodo += template
-//     } else if (item.status == 'In Progress') {
-//       templateInProgress += template
-//     } else if (item.status == 'Done') {
-//       templateDone += template
-//     }
-//   })
-//   wrapperTodo.innerHTML = templateTodo
-//   wrapperInProgress.innerHTML = templateInProgress
-//   wrapperDone.innerHTML = templateDone
-//   collection.forEach((item) => {
-//     const cardElement = $(`#c${item.id}`)
-//     cardElement.addEventListener('dragstart', handleDrag)
-//   })
-// }
-// function renderUsers(collection, wrapper) {
-//   let templates = ''
-//   collection.forEach((item) => {
-//     const template = buildDropdownTemplate(item)
-//     templates += template
-//   })
-//   wrapper.innerHTML = templates
-// }
-// other
-// function countSumTodoCards() {
-//   // let sumCards = data.length
-//   // return sumCardsElement.innerHTML = sumCards
-//   return data.filter(function (item) {
-//     if (item.status == 'ToDo') {
-//       return true
-//     } else {
-//       return false
-//     }
-//   }).length
-// }
-// function countSumInProgressCards() {
-//   // let amountChildren = inProgressWrapElement.children.length
-//   // // console.log(amountChildren)
-//   // return numberInProgressCardsElement.innerHTML = amountChildren
-//   return data.filter(function (item) {
-//     if (item.status == 'In Progress') {
-//       return true
-//     } else {
-//       return false
-//     }
-//   }).length
-// }
-// function countSumDoneCards() {
-//   // let amountChildren = doneWrapElement.children.length
-//   // // console.log(amountChildren)
-//   // return numberDoneCardsElement.innerHTML = amountChildren
-//   return data.filter(function (item) {
-//     if (item.status == 'Done') {
-//       return true
-//     } else {
-//       false
-//     }
-//   }).length
-// }
 parcelHelpers.export(exports, "handleDrag", ()=>handleDrag);
 var _helpers = require("./helpers");
 var _constructor = require("./constructor");
@@ -681,6 +579,7 @@ const doneColumnElement = (0, _helpers.$)("#doneColumn");
 const doneWrapElement = (0, _helpers.$)("#doneWrap");
 const dropdownElement = (0, _helpers.$)("#dropdown");
 const dropdownMenuElement = (0, _helpers.$)("#dropdownMenu");
+const dropdownMenuEditElement = (0, _helpers.$)("#dropdownMenuEdit");
 const deleteCardButtonElement = (0, _helpers.$)("#deleteCardButton");
 const rowElement = (0, _helpers.$)("#row");
 const modalTitleEditElement = (0, _helpers.$)("#modalTitleEdit");
@@ -697,37 +596,6 @@ const modalInstance = bootstrap.Modal.getOrCreateInstance(modalElement);
 sumCardsElement.innerHTML = (0, _counters.countSumTodoCards)(data);
 numberInProgressCardsElement.innerHTML = (0, _counters.countSumInProgressCards)(data);
 numberDoneCardsElement.innerHTML = (0, _counters.countSumDoneCards)(data);
-// local storage
-// function getData () {
-//   return JSON.parse(localStorage.getItem('data')) || []
-// }
-// function setData (source) {
-//   localStorage.setItem('data', JSON.stringify(source))
-// }
-// time
-// function currentTime() {
-//   let date = new Date(); /* creating object of Date class */
-//   let hour = date.getHours();
-//   let min = date.getMinutes();
-//   let sec = date.getSeconds();
-//   let midday = "AM";
-//   midday = (hour >= 12) ? "PM" : "AM"; /* assigning AM/PM */
-//   hour = (hour == 0) ? 12 : ((hour > 12) ? (hour - 12): hour); /* assigning hour in 12-hour format */
-//   hour = updateTime(hour);
-//   min = updateTime(min);
-//   sec = updateTime(sec);
-//   document.getElementById("clock").innerText = hour + " : " + min + " : " + sec + " " + midday; /* adding time to the div */
-//     var t = setTimeout(currentTime, 1000); /* setting timer */
-// }
-// function updateTime(k) { /* appending 0 before time elements if less than 10 */
-//   if (k < 10) {
-//     return "0" + k;
-//   }
-//   else {
-//     return k;
-//   }
-// }
-// currentTime();
 // query
 let promise = fetch("https://jsonplaceholder.typicode.com/users").then((response)=>response.json()).then((data)=>{
     users = data.map(function(elem) {
@@ -738,6 +606,8 @@ let promise = fetch("https://jsonplaceholder.typicode.com/users").then((response
 confirmButtonElement.addEventListener("click", handleConfirmation);
 dropdownElement.addEventListener("click", handleDropdownOpen);
 dropdownMenuElement.addEventListener("click", handleWriteTargetValue);
+dropdownEditElement.addEventListener("click", handleDropdownEditOpen);
+dropdownMenuEditElement.addEventListener("click", handleWriteTargetValueEdit);
 rowElement.addEventListener("click", handleEditCard);
 deleteCardButtonElement.addEventListener("click", handleDeleteCard);
 inProgressColumnElement.addEventListener("dragover", handleAllowDrop);
@@ -746,6 +616,7 @@ doneColumnElement.addEventListener("dragover", handleAllowDropInDone);
 doneColumnElement.addEventListener("drop", handleDropInDone);
 btnModalDeleteAllConfirmElement.addEventListener("click", handleDeleteAllDoneCards);
 window.addEventListener("beforeunload", handleBeforeUnload);
+confirmButtonEditElement.addEventListener("click", handleEditConfirmation);
 // handlers
 function handleConfirmation(event) {
     const card = new (0, _constructor.TodoCard)(modalTitleElement.value, modalDescriptionElement.value, dropdownElement.innerHTML, "ToDo");
@@ -755,15 +626,31 @@ function handleConfirmation(event) {
     modalDescriptionElement.value = "";
     dropdownElement.innerHTML = "Select user";
     sumCardsElement.innerHTML = (0, _counters.countSumTodoCards)(data);
-// const cardElement = $(`#c${card.id}`)
-// cardElement.addEventListener('dragstart', handleDrag)
+}
+function handleEditConfirmation(event) {
+    const { target  } = event;
+    const { role , id  } = target.dataset;
+    if (role == "confirm") {
+        const card = data.find((item)=>item.id == id);
+        card.title = modalTitleEditElement.value;
+        card.description = modalDescriptionEditElement.value;
+        card.user = dropdownEditElement.innerHTML;
+        (0, _helpers.renderCards)(data, todoWrapElement, inProgressWrapElement, doneWrapElement);
+    }
 }
 function handleDropdownOpen(event) {
     (0, _helpers.renderUsers)(users, dropdownMenuElement);
 }
+function handleDropdownEditOpen(event) {
+    (0, _helpers.renderUsers)(users, dropdownMenuEditElement);
+}
 function handleWriteTargetValue(event) {
     let name = event.target;
     dropdownElement.innerHTML = name.innerHTML;
+}
+function handleWriteTargetValueEdit(event) {
+    let name = event.target;
+    dropdownEditElement.innerHTML = name.innerHTML;
 }
 function handleEditCard(event) {
     const { target  } = event;
@@ -774,13 +661,13 @@ function handleEditCard(event) {
         modalDescriptionEditElement.value = targetCard.description;
         dropdownEditElement.innerHTML = targetCard.user;
         deleteCardButtonElement.setAttribute("data-id", `${targetCard.id}`);
+        confirmButtonEditElement.setAttribute("data-id", `${targetCard.id}`);
     }
 }
 function handleDeleteCard(event) {
     const { target  } = event;
     const { role , id  } = target.dataset;
     if (role == "delete") {
-        console.debug("deleting", id);
         data = data.filter((item)=>item.id != id);
         (0, _helpers.renderCards)(data, todoWrapElement, inProgressWrapElement, doneWrapElement);
         sumCardsElement.innerHTML = (0, _counters.countSumTodoCards)(data);
@@ -994,14 +881,14 @@ function currentTime() {
     let min = date.getMinutes();
     let sec = date.getSeconds();
     let midday = "AM";
-    midday = hour >= 12 ? "PM" : "AM"; /* assigning AM/PM */ 
+    midday = hour >= 12 ? "PM" : "AM";
     hour = hour == 0 ? 12 : hour > 12 ? hour - 12 : hour; /* assigning hour in 12-hour format */ 
     hour = updateTime(hour);
     min = updateTime(min);
     sec = updateTime(sec);
-    document.getElementById("clock").innerText = hour + " : " + min + " : " + sec + " " + midday; /* adding time to the div */ 
-    var t = setTimeout(currentTime, 1000); /* setting timer */ 
-}
+    document.getElementById("clock").innerText = hour + " : " + min + " : " + sec + " " + midday;
+    let t = setTimeout(currentTime, 1000);
+/* setting timer */ }
 function updateTime(k) {
     if (k < 10) return "0" + k;
     else return k;

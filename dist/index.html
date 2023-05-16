@@ -20,8 +20,8 @@
 
 <body class="py-3">
   <div class="container-fluid px-4 rounded-3 d-flex flex-row justify-content-between" style="max-width: 1500px; background-color: #afc4b4">
-    <div class="row rounded-3 py-3 p-3">TrelloClone</div>
-    <div id="clock" class="mt-2"></div>
+    <div class="row rounded-3 py-3 p-3 fs-2">TrelloClone</div>
+    <div id="clock" class="py-3"></div>
   </div>
 
   <div class="container-xxl">
@@ -37,17 +37,6 @@
           <div>
           </div>
           <div id="todoWrap" class="d-flex  flex-column gap-2">
-            <!-- <div class="d-flex flex-column rounded-3 px-3 py-2" style="background-color: rgb(89, 207, 119);">
-            <div class="d-flex flex-row justify-content-between">
-              <span>Title</span>
-              <button class="material-icons">more_vert</button>
-            </div>
-            <span>Description</span>
-            <div class="d-flex gap-3 justify-content-between">
-              <span>User</span>
-              <time>8:00</time>
-            </div>
-          </div> -->
           </div>
           <button class="btn mt-1" type="button" data-bs-toggle="modal" data-bs-target="#modalAddTodo" style="width: 100%; background-color: #6e9118">Add todo</button>
         </div>
@@ -60,10 +49,9 @@
           <div class="modal-content">
             <div class="modal-header">
               <input id="modalTitle" class="modal-title" placeholder="Title">
-              <!-- <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button> -->
             </div>
             <div class="modal-body">
-              <textarea id="modalDescription" placeholder="Description"></textarea>
+              <textarea class="rounded-3" id="modalDescription" placeholder="Description" style="width: 100%"></textarea>
             </div>
             <div class="modal-footer">
 
@@ -72,12 +60,11 @@
                   Select user
                 </button>
                 <ul id="dropdownMenu" class="dropdown-menu">
-
                 </ul>
               </div>
 
               <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-              <button id="confirm" type="button" data-bs-dismiss="modal" class="btn btn-primary">Confirm</button>
+              <button id="confirm" type="button" data-bs-dismiss="modal" class="btn btn-primary" style="background-color: #6e9118; border: none">Confirm</button>
             </div>
           </div>
         </div>
@@ -93,7 +80,7 @@
               <button id="deleteCardButton" type="button" class="btn material-icons" data-bs-dismiss="modal" data-role="delete" aria-label="remove" style="background-color: #dbdbdb">delete</button>
             </div>
             <div class="modal-body">
-              <textarea id="modalDescriptionEdit" placeholder="Description"></textarea>
+              <textarea class="rounded-3" id="modalDescriptionEdit" placeholder="Description" style="width: 100%"></textarea>
             </div>
             <div class="modal-footer">
 
@@ -102,18 +89,16 @@
                   Select user
                 </button>
                 <ul id="dropdownMenuEdit" class="dropdown-menu">
-
                 </ul>
               </div>
 
               <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-              <button id="confirmEdit" type="button" data-bs-dismiss="modal" class="btn btn-primary">Confirm</button>
+              <button id="confirmEdit" data-role="confirm" type="button" data-bs-dismiss="modal" class="btn btn-primary" style="background-color: #6e9118; border: none">Confirm</button>
             </div>
           </div>
         </div>
       </div>
       <!-- MODAL WINDOW FOR BUTTON EDIT -->
-
 
       <!-- COLUMN IN PROGRESS -->
       <div class="col">
@@ -123,22 +108,10 @@
             <span id="numberInProgressCards"></span>
           </div>
           <div id="inProgressWrap" class="d-flex  flex-column gap-2">
-            <!-- <div class="d-flex flex-column rounded-3 px-3 py-2" style="background-color: rgb(89, 207, 119);">
-            <div class="d-flex flex-row justify-content-between">
-              <span>Title</span>
-              <button class="material-icons">more_vert</button>
-            </div>
-            <span>Description</span>
-            <div class="d-flex gap-3 justify-content-between">
-              <span>User</span>
-              <time>8:00</time>
-            </div>
-          </div> -->
           </div>
         </div>
       </div>
       <!-- COLUMN IN PROGRESS -->
-
 
       <!-- COLUMN DONE -->
       <div class="col">
@@ -148,17 +121,6 @@
             <span id="numberDoneCards"></span>
           </div>
           <div id="doneWrap" class="d-flex  flex-column gap-2">
-            <!-- <div class="d-flex flex-column rounded-3 px-3 py-2" style="background-color: rgb(89, 207, 119);">
-            <div class="d-flex flex-row justify-content-between">
-              <span>Title</span>
-              <button class="material-icons">more_vert</button>
-            </div>
-            <span>Description</span>
-            <div class="d-flex gap-3 justify-content-between">
-              <span>User</span>
-              <time>8:00</time>
-            </div>
-          </div> -->
           </div>
           <button id="buttonDeleteAll" data-bs-toggle="modal" data-bs-target="#modalButtonDeleteAll" type="button" class="btn mt-1" style="width: 100%; background-color: #6e9118">Delete all</button>
         </div>
@@ -177,7 +139,7 @@
             </div>
             <div class="modal-footer">
               <button id="btnModalDeleteAllCancel" type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-              <button id="btnModalDeleteAllConfirm" data-bs-dismiss="modal" type="button" class="btn btn-primary">Confirm</button>
+              <button id="btnModalDeleteAllConfirm" data-bs-dismiss="modal" type="button" class="btn btn-primary" style="background-color: #6e9118; border: none">Confirm</button>
             </div>
           </div>
         </div>
@@ -201,7 +163,6 @@
         </div>
       </div>
       <!-- MODAL WINDOW FOR PROHIBITION -->
-
 
     </div>
   </div>
