@@ -605,9 +605,9 @@ let promise = fetch("https://jsonplaceholder.typicode.com/users").then((response
 // listeners
 confirmButtonElement.addEventListener("click", handleConfirmation);
 dropdownElement.addEventListener("click", handleDropdownOpen);
-dropdownMenuElement.addEventListener("click", handleWriteTargetValue);
+dropdownMenuElement.addEventListener("click", handleSetSelectedUserName);
 dropdownEditElement.addEventListener("click", handleDropdownEditOpen);
-dropdownMenuEditElement.addEventListener("click", handleWriteTargetValueEdit);
+dropdownMenuEditElement.addEventListener("click", handleSetSelectedUserNameEdit);
 rowElement.addEventListener("click", handleEditCard);
 deleteCardButtonElement.addEventListener("click", handleDeleteCard);
 inProgressColumnElement.addEventListener("dragover", handleAllowDrop);
@@ -622,10 +622,10 @@ function handleConfirmation(event) {
     const card = new (0, _constructor.TodoCard)(modalTitleElement.value, modalDescriptionElement.value, dropdownElement.innerHTML, "ToDo");
     data.push(card);
     (0, _helpers.renderCards)(data, todoWrapElement, inProgressWrapElement, doneWrapElement);
+    sumCardsElement.innerHTML = (0, _counters.countSumTodoCards)(data);
     modalTitleElement.value = "";
     modalDescriptionElement.value = "";
     dropdownElement.innerHTML = "Select user";
-    sumCardsElement.innerHTML = (0, _counters.countSumTodoCards)(data);
 }
 function handleEditConfirmation(event) {
     const { target  } = event;
@@ -644,16 +644,17 @@ function handleDropdownOpen(event) {
 function handleDropdownEditOpen(event) {
     (0, _helpers.renderUsers)(users, dropdownMenuEditElement);
 }
-function handleWriteTargetValue(event) {
+function handleSetSelectedUserName(event) {
     let name = event.target;
     dropdownElement.innerHTML = name.innerHTML;
 }
-function handleWriteTargetValueEdit(event) {
+function handleSetSelectedUserNameEdit(event) {
     let name = event.target;
     dropdownEditElement.innerHTML = name.innerHTML;
 }
 function handleEditCard(event) {
-    const { target  } = event;
+    const { target  } = event // заполняем модальное окно данными карточки
+    ;
     const { role , id  } = target.dataset;
     if (role == "edit") {
         const targetCard = data.find((item)=>item.id == id);
@@ -685,8 +686,6 @@ function handleDrag(event) {
 }
 function handleDropInProgress(event) {
     let itemId = event.dataTransfer.getData("id");
-    // console.log(itemId)
-    console.log((0, _helpers.$)(`#c${itemId}`));
     inProgressWrapElement.append((0, _helpers.$)(`#${itemId}`));
     let cardItemId = itemId.substring(1) // чтобы обрезать в id="c${cardItem.id} чтобы найти карточку
     ;
@@ -701,8 +700,6 @@ function handleAllowDropInDone(event) {
 }
 function handleDropInDone(event) {
     let itemId = event.dataTransfer.getData("id");
-    // console.log(itemId)
-    //console.log($(`#${itemId}`))
     doneWrapElement.append((0, _helpers.$)(`#${itemId}`));
     let cardItemId = itemId.substring(1);
     const draggedCard = data.find((item)=>item.id == cardItemId);
@@ -757,7 +754,8 @@ function renderCards(collection, wrapperTodo, wrapperInProgress, wrapperDone) {
 function renderUsers(collection, wrapper) {
     let templates = "";
     collection.forEach((item)=>{
-        const template = (0, _templates.buildDropdownTemplate)(item);
+        const template = (0, _templates.buildDropdownTemplate)(item) // создаем элемент списка дроп.
+        ;
         templates += template;
     });
     wrapper.innerHTML = templates;
@@ -876,7 +874,7 @@ var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "currentTime", ()=>currentTime);
 function currentTime() {
-    let date = new Date();
+    const date = new Date();
     let hour = date.getHours();
     let min = date.getMinutes();
     let sec = date.getSeconds();

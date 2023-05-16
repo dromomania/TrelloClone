@@ -1,5 +1,3 @@
-
-
 function countSumTodoCards(data) {
   // let sumCards = data.length
   // return sumCardsElement.innerHTML = sumCards

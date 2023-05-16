@@ -28,7 +28,7 @@ function renderCards(collection, wrapperTodo, wrapperInProgress, wrapperDone) {
   wrapperDone.innerHTML = templateDone
 
 
-  collection.forEach((item) => {
+  collection.forEach((item) => {    // чтобы карточка реагировала на drag
     const cardElement = $(`#c${item.id}`)
     cardElement.addEventListener('dragstart', handleDrag)
   })
@@ -37,7 +37,7 @@ function renderCards(collection, wrapperTodo, wrapperInProgress, wrapperDone) {
 function renderUsers(collection, wrapper) {
   let templates = ''
   collection.forEach((item) => {
-    const template = buildDropdownTemplate(item)
+    const template = buildDropdownTemplate(item) // создаем элемент списка дроп.
 
     templates += template
   })

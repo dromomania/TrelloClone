@@ -57,9 +57,9 @@ let promise = fetch('https://jsonplaceholder.typicode.com/users')
 confirmButtonElement.addEventListener('click', handleConfirmation)
 
 dropdownElement.addEventListener('click', handleDropdownOpen)
-dropdownMenuElement.addEventListener('click', handleWriteTargetValue)
+dropdownMenuElement.addEventListener('click', handleSetSelectedUserName)
 dropdownEditElement.addEventListener('click', handleDropdownEditOpen)
-dropdownMenuEditElement.addEventListener('click', handleWriteTargetValueEdit)
+dropdownMenuEditElement.addEventListener('click', handleSetSelectedUserNameEdit)
 
 
 rowElement.addEventListener('click', handleEditCard)
@@ -79,11 +79,11 @@ function handleConfirmation(event) {
   data.push(card)
 
   renderCards(data, todoWrapElement, inProgressWrapElement, doneWrapElement)
+  sumCardsElement.innerHTML = countSumTodoCards(data)
+
   modalTitleElement.value = ''
   modalDescriptionElement.value = ''
   dropdownElement.innerHTML = 'Select user'
-  sumCardsElement.innerHTML = countSumTodoCards(data)
-
 }
 
 function handleEditConfirmation(event) {
@@ -109,20 +109,20 @@ function handleDropdownEditOpen(event) {
   renderUsers(users, dropdownMenuEditElement)
 }
 
-function handleWriteTargetValue(event) {
+function handleSetSelectedUserName(event) {
   let name = event.target
   dropdownElement.innerHTML = name.innerHTML
 
 }
 
-function handleWriteTargetValueEdit(event) {
+function handleSetSelectedUserNameEdit(event) {
   let name = event.target
   dropdownEditElement.innerHTML = name.innerHTML
 
 }
 
 function handleEditCard(event) {
-  const { target } = event
+  const { target } = event           // заполняем модальное окно данными карточки
   const { role, id } = target.dataset
 
   if (role == 'edit') {
@@ -130,6 +130,7 @@ function handleEditCard(event) {
     modalTitleEditElement.value = targetCard.title
     modalDescriptionEditElement.value = targetCard.description
     dropdownEditElement.innerHTML = targetCard.user
+
     deleteCardButtonElement.setAttribute('data-id', `${targetCard.id}`)
     confirmButtonEditElement.setAttribute('data-id', `${targetCard.id}`)
   }
@@ -163,10 +164,8 @@ function handleDrag(event) {
   //console.log(event.target.id)
 }
 
-function handleDropInProgress(event) {
+function handleDropInProgress(event) {              //!!!!
   let itemId = event.dataTransfer.getData('id')
-  // console.log(itemId)
-  console.log($(`#c${itemId}`))
   inProgressWrapElement.append($(`#${itemId}`))
 
   let cardItemId = itemId.substring(1) // чтобы обрезать в id="c${cardItem.id} чтобы найти карточку
@@ -184,8 +183,6 @@ function handleAllowDropInDone(event) {
 
 function handleDropInDone(event) {
   let itemId = event.dataTransfer.getData('id')
-  // console.log(itemId)
-  //console.log($(`#${itemId}`))
   doneWrapElement.append($(`#${itemId}`))
 
   let cardItemId = itemId.substring(1)
